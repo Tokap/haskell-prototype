@@ -18,3 +18,10 @@ https://hackage.haskell.org/package/http-conduit-2.2.3
 
 `happstack` -> Server:
 https://hackage.haskell.org/package/happstack
+
+`HaskellStack`
+  -> https://docs.haskellstack.org/en/stable/install_and_upgrade/#macos
+  -> https://github.com/commercialhaskell/stack
+
+`JSON Conversion`
+  -> https://www.stackage.org/haddock/lts-8.2/aeson-1.0.2.1/Data-Aeson.html#v:json
