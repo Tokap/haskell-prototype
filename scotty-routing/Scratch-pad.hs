@@ -67,6 +67,49 @@ main = do
 
 
 
+-- data User = User { userId :: Int, userName :: String } deriving (Show, Generic)
+-- instance ToJSON User
+-- instance FromJSON User
+--
+-- bob :: User
+-- bob = User { userId = 1, userName = "bob" }
+--
+-- jenny :: User
+-- jenny = User { userId = 2, userName = "jenny" }
+
+-- allUsers :: [User]
+-- allUsers = [bob, jenny]
+
+
+
+
+
+
+
+startServer :: IO ()
+startServer = do
+  putStrLn "Starting Server..."
+
+  scotty 3000 $ do
+    get "/hello/:name" $ do
+      name <- param "name"
+      text ("hello " <> name <> "!")
+
+    get "/posts" $ do
+      json allUsers
+
+    get "/comments" $ do
+      json allUsers
+
+    get "/users/:id" $ do -- EXAMPLE OF HOW TO FILTER:
+      id <- param "id"
+      json (filter (matchesId id) allUsers)
+
+    -- assignment: post user and print it out
+    post "/users" $ do
+      user <- jsonData :: ActionM User
+      json user
+
 
 
 
@@ -110,3 +153,15 @@ main = do
 --   Just 6
 --   Nothing
 --   return 5
+
+
+
+
+-- let testPost = makePost "Generic Title" "Fleshed Out Post Body" 11 22
+-- let testComment = makeComment "Bill" "bill@bill.com" "A lot of words go here" 1
+-- -- statusQuery connDetails
+-- -- z <- getPostById connDetails 1
+-- -- z <- insertPost' connDetails testPost
+-- allPosts <- getAllPosts connDetails
+-- -- let allPosts = getAllPosts connDetails
+-- print $ allPosts

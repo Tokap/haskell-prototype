@@ -88,6 +88,9 @@ data CommenterInfo = CommenterInfo {
 -- instance FromJSON User
 
 
+-- deets <- stockQuery' connDetails
+-- let deets = stockQuery' connDetails // This is bad: would make deets IO String
+-- putStrLn deets
 
 
 -- import qualified Data.Text as Text
