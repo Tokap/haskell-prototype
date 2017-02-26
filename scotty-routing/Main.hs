@@ -37,7 +37,7 @@ main = do
       id <- param "id"
       json (filter (matchesId id) allUsers)
 
-    -- assignment: post user and print it out
+    -- use postman to send this via raw body message:
     post "/users" $ do
       user <- jsonData :: ActionM User
       json user
